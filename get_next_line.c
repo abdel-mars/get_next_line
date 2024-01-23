@@ -6,7 +6,7 @@
 /*   By: abdel-ma <abdel-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 21:30:50 by abdel-ma          #+#    #+#             */
-/*   Updated: 2024/01/22 02:29:10 by abdel-ma         ###   ########.fr       */
+/*   Updated: 2024/01/23 00:42:22 by abdel-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ static char *set_line(char *line_buff)
     i = 0;
     while (line_buff[i] != '\n' && line_buff[i] != '\0')
         i++;
-    if (line_buff[i] == '\0' || line_buff[1] == '\0')
+    if (line_buff[i] == '\0' || line_buff[i + 1] == '\0')
         return (NULL);
-    line_buff[i + 1] = '\0';
-    rest = ft_strdup(line_buff + i + 1);
-    if (*rest == '\0')
+    rest = ft_substr(line_buff, i + 1, ft_strlen(line_buff) - i);
+    if (rest == NULL)
     {
         free(rest);
         rest = NULL;
     }
+    line_buff[i + 1] = '\0';
     return (rest);
     
 }
@@ -70,7 +70,7 @@ char *get_next_line(int fd)
     buff = malloc((BUFFER_SIZE + 1) * (sizeof(char)));
     if (!buff)
         return (NULL);
-    else if (fd < 0 || read(fd, 0, 0) < 0 || BUFFER_SIZE <= 0)
+    if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
     {
         free(rest);
         free(buff);
@@ -80,6 +80,7 @@ char *get_next_line(int fd)
     }
     line = read_line(fd, rest, buff);
     free (buff);
+    buff = NULL;
     if (!line)
         return (NULL);
     rest = set_line(line);

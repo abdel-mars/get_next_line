@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abdel-ma <abdel-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/13 00:20:01 by abdel-ma          #+#    #+#             */
-/*   Updated: 2024/01/24 02:30:01 by abdel-ma         ###   ########.fr       */
+/*   Created: 2024/01/24 02:40:45 by abdel-ma          #+#    #+#             */
+/*   Updated: 2024/01/24 02:57:00 by abdel-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *str)
 {

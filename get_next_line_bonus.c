@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abdel-ma <abdel-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/29 21:30:50 by abdel-ma          #+#    #+#             */
-/*   Updated: 2024/01/24 02:27:06 by abdel-ma         ###   ########.fr       */
+/*   Created: 2024/01/24 02:41:05 by abdel-ma          #+#    #+#             */
+/*   Updated: 2024/01/24 02:58:33 by abdel-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*set_line(char *line_buff)
 {
@@ -61,7 +61,7 @@ static char	*read_line(int fd, char *rest, char *buff)
 
 char	*get_next_line(int fd)
 {
-	static char	*rest;
+	static char	*rest[MAX_FD];
 	char		*line;
 	char		*buff;
 
@@ -70,17 +70,17 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (fd < 0 || BUFFER_SIZE <= 0)
 	{
-		free(rest);
+		free(rest[fd]);
 		free(buff);
-		rest = NULL;
+		rest[fd] = NULL;
 		buff = NULL;
 		return (NULL);
 	}
-	line = read_line(fd, rest, buff);
+	line = read_line(fd, rest[fd], buff);
 	free (buff);
 	buff = NULL;
 	if (!line)
 		return (NULL);
-	rest = set_line(line);
+	rest[fd] = set_line(line);
 	return (line);
 }

@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abdel-ma <abdel-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/30 01:39:29 by abdel-ma          #+#    #+#             */
-/*   Updated: 2024/01/24 02:34:20 by abdel-ma         ###   ########.fr       */
+/*   Created: 2024/01/24 02:41:29 by abdel-ma          #+#    #+#             */
+/*   Updated: 2024/01/24 02:56:26 by abdel-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
+# define MAX_FD 10240
 
 # include <unistd.h>
 # include <stdlib.h>

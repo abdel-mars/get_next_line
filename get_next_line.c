@@ -6,7 +6,7 @@
 /*   By: abdel-ma <abdel-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 21:30:50 by abdel-ma          #+#    #+#             */
-/*   Updated: 2024/01/24 02:27:06 by abdel-ma         ###   ########.fr       */
+/*   Updated: 2024/01/25 02:38:57 by abdel-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,11 @@ static char	*read_line(int fd, char *rest, char *buff)
 	{
 		read_buff = read(fd, buff, BUFFER_SIZE);
 		if (read_buff == -1)
+		{
 			free(rest);
-		return (NULL);
-		if (read_buff == 0)
+			return (NULL);
+		}
+		else if (read_buff == 0)
 			break ;
 		buff[read_buff] = 0;
 		if (!rest)

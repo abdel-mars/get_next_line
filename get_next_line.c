@@ -6,7 +6,7 @@
 /*   By: abdel-ma <abdel-ma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 21:30:50 by abdel-ma          #+#    #+#             */
-/*   Updated: 2024/01/25 02:38:57 by abdel-ma         ###   ########.fr       */
+/*   Updated: 2024/01/27 03:46:57 by abdel-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ static char	*set_line(char *line_buff)
 	i = 0;
 	while (line_buff[i] != '\n' && line_buff[i] != '\0')
 		i++;
-	if (line_buff[i] == 0 || line_buff[1] == 0)
+	if (line_buff[i] == '\0' || line_buff[1] == '\0')
 		return (NULL);
 	rest = ft_substr(line_buff, i + 1, ft_strlen(line_buff) - i);
-	if (*rest == 0)
+	if (*rest == '\0')
 	{
 		free(rest);
 		rest = NULL;
 	}
-	line_buff[i + 1] = 0;
+	line_buff[i + 1] = '\0';
 	return (rest);
 }
 
@@ -46,9 +46,9 @@ static char	*read_line(int fd, char *rest, char *buff)
 			free(rest);
 			return (NULL);
 		}
-		else if (read_buff == 0)
+		else if (read_buff == '\0')
 			break ;
-		buff[read_buff] = 0;
+		buff[read_buff] = '\0';
 		if (!rest)
 			rest = ft_strdup("");
 		tmp = rest;
@@ -72,8 +72,8 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (fd < 0 || BUFFER_SIZE <= 0)
 	{
-		free(rest);
 		free(buff);
+		free(rest);
 		rest = NULL;
 		buff = NULL;
 		return (NULL);
